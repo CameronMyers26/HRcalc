@@ -1,0 +1,111 @@
+<html lang="en">
+<head>
+    
+    <title>Hawking Radiation</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=UnifrakturMaguntia">
+    <link rel="stylesheet" href="../HR Web/jqmath-0.4.3.css">
+    <script src="../HR Web/jquery-1.4.3.min.js"></script>
+    <script src="../HR Web/jqmath-etc-0.4.6.min.js" charset="utf-8"></script>
+    <!-- Recommended meta tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+    <!-- PyScript CSS -->
+    <link rel="stylesheet" href="https://pyscript.net/releases/2024.4.2/core.css">
+    <link rel="stylesheet" href="style.css">
+
+    <!-- This script tag bootstraps PyScript -->
+    <script type="module" src="https://pyscript.net/releases/2024.4.2/core.js"></script>
+</head>
+<body>
+    <div class="w3-container">
+        <div class = "top">
+            <div>Hawking Radiation</div>
+        </div>
+        <div class="info">
+            <div>I will breifly explain Hawking Radiation and the purpose of this calculator, but a more rigorous paper will also be included. After general relativety was discovered, physicists found solutions where the curvature of spacetime could be bent so catastrophically that even light would not be able to escape within a certain boundary. This boundary would later be known as the event horizon of a black hole. Until 1974, it was believed that nothing that passed into an event horizon could ever escape. However, Stephen Hawking would come up with a theory that would propose a way that black holes could emit energy and therefore lose mass until an eventual evaporation (or perhaps explosion) of that black hole. This energy would become known as hawking radiation, and can be thought of in different ways. One way to explain it would be the effect of the massive tidal forces near the event horizon causing a disruption of the surrounding quantum fields that would allow for particle-antiparticle pairs to be created, and subsequently if the antiparticle falls in and the particle escapes, then this would result in energy escaping the system. Another way to look at it would be to calculate the necessary wavelength a particle would need to escape the boundary via quantum tunneling. Both these ideas lead to the same expected emitted thermal spectrum. The exact origin of hawking radiation is still not known, as it requires a union of quantum mechanics and general relativety, or more precisely, a quantum theory of gravity. Below you can play with values to see just how strange this phenomenon is.  </div>
+        </div>
+    <!--<script type="py" src="./main.py" config="./pyscript.toml" terminal></script>-->
+    <table>
+        <tbody>
+            <tr>
+                <th>Quantity</th>
+                <th>Value</th>
+                <th>Units</th>
+                <th>Expression</th>
+            </tr>
+            <tr>
+                <td>Mass</td>
+                <td>
+                    <input id = "mass_text" type="text" size="12" onchange="mass_update()">
+                </td>
+                <td>
+                    <select id = "mass_unit" size="1" onchange="get_mass()" >
+                        <option value="kg">kg</option> 
+                        <option value="Msun"  selected="selected">M☉</option>
+                    </select>           
+                </td>
+                <td id = "exp">M</td>
+            </tr>
+            <tr>
+                <td>
+                    Schwarzschild Radius
+                </td>
+                <td>
+                    <input type="text" id="rad_text" size="12" onchange="set_rad()">
+                </td>
+                <td>
+                    <select id="rad_unit" size="1" onchange="get_rad()"> 
+                        <option value="m" selected="selected">m</option> 
+                        <option value="ls">light seconds</option> 
+                </td>
+                <td id = "exp">
+                    $\cl "eq" {R=M {2G}/c^2}$
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Temperature
+                </td>
+                <td>
+                    <input type="text" id="tmp_text" size="12" onchange="set_tmp()">
+                </td>
+                <td>
+                    <select id="tmp_unit" size="1" onchange="get_tmp()"> 
+                        <option value="K" selected="selected">K</option> 
+                </td>
+                <td>
+                    $\cl "eq" {T={1/M}{ℏc^3}/{8πk_bG}}$
+                </td>
+            </tr>
+            <tr>
+                <td>Lifetime</td>
+                <td>
+                    <input type="text" id="tim_text" size="12" onchange="set_tim()">
+                </td>
+                <td>
+                    <select id="tim_unit" size="1" onchange="get_tim()"> 
+                        <option value="yr" selected="selected">years</option>
+                </td>
+                <td>
+                    $\cl "eq" {t=M^3 {5120πG^2}/{1.8083ℏc^4}}$
+                </td>
+            </tr>
+        </tbody>
+    </table>
+        <div class = "info">
+            You may notice some strange things here. First off, black holes' temperature increases inversely with its mass. In other words, the more massive the black hole is, the colder it is. This makes the time it takes for a black hole to evaporate unfathomably large. However, with temperatures this low they will not even begin to evaporate until the background temperature of the universe is colder than they are. In the future I will be adding a CMB temperature estimator as well.
+        </div>
+        <iframe class="pdf" 
+                src="Astro_161__Hawking_Radiation.pdf"
+            width="800" height="500">
+        </iframe>
+        <iframe class="pdf" 
+                src="hawking_radiation_calculator.pdf"
+            width="800" height="500">
+        </iframe>
+    </div>
+</body>
+</html>
